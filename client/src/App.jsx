@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GetList from "./components/GetList";
 import CreatePerson from "./components/CreatePerson";
+import UpdatePerson from "./components/UpdatePerson";
 function App() {
   return (
     <BrowserRouter>
@@ -8,7 +9,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<GetList />} />
           <Route exact path="/create-person" element={<CreatePerson />} />
-          {/* <Route exact path="/update-person/:id" element={<UpdatePerson />} /> */}
+          <Route exact path="/update-person" element={<UpdatePerson />} />
         </Routes>
       </div>
     </BrowserRouter>
