@@ -1,10 +1,17 @@
 import React from "react";
+import axios from "axios"
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input, InputNumber } from "antd";
 function CreatePerson() {
   const navigate = useNavigate();
+  const savePerson = async (values) => {
+    return await axios.post("http://localhost:5000/create-person",values)
+
+  }
   const onFinish = (values) => {
     console.log("Success:", values);
+    savePerson(values)
+    alert("Saved")
     navigate("/");
   };
   const onFinishFailed = (errorInfo) => {
