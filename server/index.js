@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
+require('dotenv').config();
 
 // mongose baglantisi
 const DATABASE_URL = process.env.DB_URL
