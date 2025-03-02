@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Space, Table } from "antd";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 function GetList() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const dataSource = [
         {
           key: '1',
@@ -60,7 +62,10 @@ function GetList() {
       
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} />
+        <Link to="/create-person">
+        <button className='bg-blue-700 p-2 rounded-xl text-white font-bold cursor-pointer hover:bg-blue-800 transition-colors' setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} >+ Add Person</button>
+        </Link>
+      <Table className='mt-8' dataSource={dataSource} columns={columns} />
     </div>
   )
 }
