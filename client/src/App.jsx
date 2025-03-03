@@ -9,7 +9,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<GetList />} />
           <Route exact path="/create-person" element={<CreatePerson />} />
-          <Route exact path="/update-person" element={<UpdatePerson />} />
+          <Route exact path="/update-person/:id" element={<UpdatePerson />} />
         </Routes>
       </div>
     </BrowserRouter>
