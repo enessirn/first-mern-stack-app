@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+require("dotenv").config();
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
-require("dotenv").config();
+
 const PersonModel = require("./models/Persons");
 // mongose baglantisi
 const DATABASE_URL = process.env.DB_URL;
