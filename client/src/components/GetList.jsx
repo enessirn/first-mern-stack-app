@@ -7,7 +7,7 @@ function GetList() {
   useEffect(() => {
     const list = async () => {
       try {
-        const data = await axios.get("http://localhost:5000/");
+        const data = await axios.get(`${import.meta.env.VITE_API_URL}`);
         setPersons(data.data);
       } catch (error) {
         console.log(error);
@@ -18,7 +18,7 @@ function GetList() {
   }, [persons]);
 
   const deletePerson = async (id) => {
-    const response = await axios.delete("http://localhost:5000/delete-person/" + id);
+    const response = await axios.delete(`${import.meta.env.VITE_API_URL}delete-person/` + id);
     
     if (response.status === 200) {
       alert("Deleted");

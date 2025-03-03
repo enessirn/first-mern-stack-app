@@ -11,7 +11,7 @@ function UpdatePerson() {
   useEffect(() => {
     const fetchPerson = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/get-person/" + id);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}get-person/` + id);
         form.setFieldsValue(data);
 
       } catch (error) {
@@ -24,7 +24,7 @@ function UpdatePerson() {
 
   const onFinish = async (values) => {
     try {
-      await axios.put("http://localhost:5000/update-person/" + id, values)
+      await axios.put(`${import.meta.env.VITE_API_URL}update-person/` + id, values)
       .then(alert("Updated"))
       .then(navigate("/"));
     } catch (error) {

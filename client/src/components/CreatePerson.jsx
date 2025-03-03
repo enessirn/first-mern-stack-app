@@ -5,7 +5,7 @@ import { Button, Form, Input, InputNumber } from "antd";
 function CreatePerson() {
   const navigate = useNavigate();
   const savePerson = async (values) => {
-    return await axios.post("http://localhost:5000/create-person",values)
+    return await axios.post(`${import.meta.env.VITE_API_URL}create-person`,values)
 
   }
   const onFinish = (values) => {
