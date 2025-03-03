@@ -56,6 +56,22 @@ app.put("/update-person/:id", async (req,res) => {
   }
 })
 
+// delete islemi
+
+app.delete("/delete-person/:id", async (req, res) => {
+  const {id} = req.params;
+
+  try {
+    const person = await PersonModel.findByIdAndDelete(id)
+    if(!person) {
+      return res.status(404).json({message: "Person not found"})
+    }
+    res.status(200).json({ message: "Person deleted" });
+  } catch (error) {
+    res.status(500).json({ message: "Error", error });
+  }
+})
+
 app.listen(5000, () => {
   console.log("server is up");
 });

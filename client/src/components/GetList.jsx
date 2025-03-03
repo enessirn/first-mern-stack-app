@@ -15,7 +15,16 @@ function GetList() {
     };
 
     return list;
-  }, []);
+  }, [persons]);
+
+  const deletePerson = async (id) => {
+    const response = await axios.delete("http://localhost:5000/delete-person/" + id);
+    
+    if (response.status === 200) {
+      alert("Deleted");
+    }
+
+  }
   const columns = [
     {
       title: "Full Name",
@@ -49,7 +58,7 @@ function GetList() {
               Update
             </button>
           </Link>
-          <button className="bg-red-800 p-2 cursor-pointer rounded-md text-white hover:bg-red-900 transition-colors">
+          <button onClick={() => deletePerson(record._id)} className="bg-red-800 p-2 cursor-pointer rounded-md text-white hover:bg-red-900 transition-colors">
             Delete
           </button>
         </Space>

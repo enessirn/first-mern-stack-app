@@ -41,8 +41,6 @@ function UpdatePerson() {
       </Link>
       <div className="border rounded-2xl px-30 py-20">
         <h1 className="text-center mb-16 text-3xl font-bold">Update the person</h1>
-        
-        {/* Form bileşenine `form` prop'u verildi */}
         <Form
           form={form}
           name="updatePerson"
