@@ -116,7 +116,7 @@ function UpdatePerson() {
           </Form.Item>
 
           <Form.Item>
-            <Button style={{ width: "200px" }} type="primary" htmlType="submit">
+            <Button style={{ width: "200px", marginLeft: "100px" }} type="primary" htmlType="submit">
               Update
             </Button>
           </Form.Item>
