@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors())
 app.use(express.json());
 
 const PersonModel = require("./models/Persons");
@@ -11,10 +11,7 @@ const PersonModel = require("./models/Persons");
 const DATABASE_URL = process.env.DB_URL;
 
 mongoose
-  .connect(DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(DATABASE_URL)
   .then(() => console.log("MongoDB bağlantısı başarılı!"))
   .catch((err) => console.error("MongoDB bağlantısı hatalı:", err));
 //

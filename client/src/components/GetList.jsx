@@ -4,27 +4,32 @@ import { Space, Table } from "antd";
 import { Link } from "react-router-dom";
 function GetList() {
   const [persons, setPersons] = useState([]);
-  useEffect(() => {
-    const list = async () => {
-      try {
-        const data = await axios.get(`${import.meta.env.VITE_API_URL}`);
-        setPersons(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    return list;
-  }, [persons]);
+  const getPersons = async () => {
+    try {
+      const data = await axios.get(import.meta.env.VITE_API_URL);
+      setPersons(data.data);
+    } catch (error) {
+      console.log("Get api error:", error);
+    }
+  };
+  useEffect(() => {
+    const getList = async () => {
+      getPersons()
+    }
+    getList();
+  }, []);
 
   const deletePerson = async (id) => {
-    const response = await axios.delete(`${import.meta.env.VITE_API_URL}delete-person/` + id);
-    
+    const response = await axios.delete(
+      `${import.meta.env.VITE_API_URL}delete-person/` + id
+    );
+
     if (response.status === 200) {
       alert("Deleted");
+      getPersons();
     }
-
-  }
+  };
   const columns = [
     {
       title: "Full Name",
@@ -58,7 +63,10 @@ function GetList() {
               Update
             </button>
           </Link>
-          <button onClick={() => deletePerson(record._id)} className="bg-red-800 p-2 cursor-pointer rounded-md text-white hover:bg-red-900 transition-colors">
+          <button
+            onClick={() => deletePerson(record._id)}
+            className="bg-red-800 p-2 cursor-pointer rounded-md text-white hover:bg-red-900 transition-colors"
+          >
             Delete
           </button>
         </Space>
