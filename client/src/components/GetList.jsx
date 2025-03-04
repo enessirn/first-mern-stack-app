@@ -22,7 +22,7 @@ function GetList() {
 
   const deletePerson = async (id) => {
     const response = await axios.delete(
-      `${import.meta.env.VITE_API_URL}delete-person/` + id
+      `${import.meta.env.VITE_API_URL}/delete-person/` + id
     );
 
     if (response.status === 200) {
