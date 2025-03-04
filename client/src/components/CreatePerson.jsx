@@ -77,12 +77,13 @@ function CreatePerson() {
             name="phone"
             rules={[
               {
+                type: "number",
                 required: true,
                 message: "Please input your phone number!",
               },
             ]}
           >
-            <Input placeholder="e.x. 5211456598" maxLength={10} />
+            <InputNumber placeholder="e.x. 5211456598" maxLength={10} />
           </Form.Item>
           <Form.Item
             label="Email"
