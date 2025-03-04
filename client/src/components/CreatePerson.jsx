@@ -1,17 +1,19 @@
 import React from "react";
-import axios from "axios"
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input, InputNumber } from "antd";
 function CreatePerson() {
   const navigate = useNavigate();
   const savePerson = async (values) => {
-    return await axios.post(`${import.meta.env.VITE_API_URL}/create-person`,values)
-
-  }
+    return await axios.post(
+      `${import.meta.env.VITE_API_URL}/create-person`,
+      values
+    );
+  };
   const onFinish = (values) => {
     console.log("Success:", values);
-    savePerson(values)
-    alert("Saved")
+    savePerson(values);
+    alert("Saved");
     navigate("/");
   };
   const onFinishFailed = (errorInfo) => {
@@ -56,7 +58,7 @@ function CreatePerson() {
               },
             ]}
           >
-            <Input placeholder="Full Name" />
+            <Input style={{ width: "200px" }} placeholder="Full Name" />
           </Form.Item>
           <Form.Item
             label="Age"
@@ -69,7 +71,12 @@ function CreatePerson() {
               },
             ]}
           >
-            <InputNumber min={18} placeholder="Age" max={99} />
+            <InputNumber
+              style={{ width: "200px" }}
+              min={18}
+              placeholder="Age"
+              max={99}
+            />
           </Form.Item>
 
           <Form.Item
@@ -83,7 +90,11 @@ function CreatePerson() {
               },
             ]}
           >
-            <InputNumber placeholder="e.x. 5211456598" maxLength={10} />
+            <InputNumber
+              style={{ width: "200px" }}
+              placeholder="e.x. 5211456598"
+              maxLength={10}
+            />
           </Form.Item>
           <Form.Item
             label="Email"
@@ -96,10 +107,10 @@ function CreatePerson() {
               },
             ]}
           >
-            <Input placeholder="Email" />
+            <Input style={{ width: "200px" }} placeholder="Email" />
           </Form.Item>
           <Form.Item label={null}>
-            <Button type="primary" htmlType="submit">
+            <Button style={{ width: "200px" }} type="primary" htmlType="submit">
               Save
             </Button>
           </Form.Item>

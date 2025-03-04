@@ -11,9 +11,10 @@ function UpdatePerson() {
   useEffect(() => {
     const fetchPerson = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/get-person/` + id);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/get-person/` + id
+        );
         form.setFieldsValue(data);
-
       } catch (error) {
         console.error(error);
       }
@@ -24,9 +25,10 @@ function UpdatePerson() {
 
   const onFinish = async (values) => {
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/update-person/` + id, values)
-      .then(alert("Updated"))
-      .then(navigate("/"));
+      await axios
+        .put(`${import.meta.env.VITE_API_URL}/update-person/` + id, values)
+        .then(alert("Updated"))
+        .then(navigate("/"));
     } catch (error) {
       console.error("Update error:", error);
     }
@@ -40,7 +42,9 @@ function UpdatePerson() {
         </button>
       </Link>
       <div className="border rounded-2xl px-30 py-20">
-        <h1 className="text-center mb-16 text-3xl font-bold">Update the person</h1>
+        <h1 className="text-center mb-16 text-3xl font-bold">
+          Update the person
+        </h1>
         <Form
           form={form}
           name="updatePerson"
@@ -53,37 +57,66 @@ function UpdatePerson() {
           <Form.Item
             label="Full Name"
             name="fullname"
-            rules={[{ required: true, message: "Please input your full name!" }]}
+            rules={[
+              { required: true, message: "Please input your full name!" },
+            ]}
           >
-            <Input placeholder="Full Name" />
+            <Input style={{ width: "200px" }} placeholder="Full Name" />
           </Form.Item>
 
           <Form.Item
             label="Age"
             name="age"
-            rules={[{ type: "number", required: true, message: "Please input your age!" }]}
+            rules={[
+              {
+                type: "number",
+                required: true,
+                message: "Please input your age!",
+              },
+            ]}
           >
-            <InputNumber min={18} max={99} placeholder="Age" />
+            <InputNumber
+              style={{ width: "200px" }}
+              min={18}
+              max={99}
+              placeholder="Age"
+            />
           </Form.Item>
 
           <Form.Item
             label="Tel"
             name="phone"
-            rules={[{ required: true, message: "Please input your phone number!" }]}
+            rules={[
+              {
+                type: "number",
+                required: true,
+                message: "Please input your phone number!",
+              },
+            ]}
           >
-            <Input placeholder="e.x. 5211456598" maxLength={10} />
+            <InputNumber
+              style={{ width: "200px" }}
+              placeholder="e.x. 5211456598"
+              maxLength={10}
+            />
           </Form.Item>
 
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ type: "email", required: true, message: "Please input your Email!" }]}
+            rules={[
+              {
+                type: "email",
+                required: true,
+                message: "Please input your Email!",
+              },
+            ]}
           >
-            <Input placeholder="Email" />
+            <Input style={{ width: "200px" }} placeholder="Email" />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button style={{ width: "200px" }} type="primary" htmlType="submit">
               Update
             </Button>
           </Form.Item>
